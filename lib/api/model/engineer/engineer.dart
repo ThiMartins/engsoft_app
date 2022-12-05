@@ -6,8 +6,10 @@ import 'package:comunidade_de_engenheiros_de_software/api/model/engineer/formati
 import 'package:comunidade_de_engenheiros_de_software/api/model/engineer/project.dart';
 import 'package:comunidade_de_engenheiros_de_software/api/model/engineer/skills.dart';
 import 'package:comunidade_de_engenheiros_de_software/util/api_util.dart';
+import 'package:comunidade_de_engenheiros_de_software/util/reflector.dart';
 import 'package:image_picker/image_picker.dart';
 
+@reflector
 class Engineer extends BaseModel {
   int id;
   bool isApproved = false;
@@ -49,10 +51,16 @@ class Engineer extends BaseModel {
         address = map["endereco"],
         phone = map["telefone"],
         picture = map["foto"],
+        formations = [],
+        experiences = [],
+        projects = [],
+        skills = [],
+        /*       
         formations = toListObject(map["formacoes"]),
         experiences = toListObject(map["formacoes"]),
         projects = toListObject(map["projetos"]),
         skills = toListObject(map["habilidades"]),
+        */
         super.fromJson();
 
   Engineer.test({int? id, String? name, bool? isApproved, String? picture})

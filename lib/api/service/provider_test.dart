@@ -24,11 +24,11 @@ List<Pair<User, Engineer>> usersTest = [
       second: Engineer.test(id: 1, name: "Felipe Roberto", isApproved: true)),
   Pair(
       first: User(isADM: false, isEnable: true, cpf: "22222222222"),
-      second: Engineer.test(id: 2, name: "Gabriel Luan", isApproved: false)),
+      second: Engineer.test(id: 2, name: "Gabriel Luan", isApproved: true)),
   Pair(
       first: User(isADM: false, isEnable: true, cpf: "33333333333"),
       second:
-          Engineer.test(id: 3, name: "Raquel de Oliveira", isApproved: false)),
+          Engineer.test(id: 3, name: "Raquel de Oliveira", isApproved: true)),
   Pair(
       first: User(isADM: false, isEnable: true, cpf: "44444444444"),
       second: Engineer.test(id: 4, name: "Ana Beatriz", isApproved: false)),

@@ -13,6 +13,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
+
 class MainPage extends StatefulWidget {
   const MainPage({Key? key}) : super(key: key);
 
@@ -21,9 +22,11 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
-  final PagingController<int, Engineer> _pagingController = PagingController(firstPageKey: 0);
+  final PagingController<int, Engineer> _pagingController =
+      PagingController(firstPageKey: 0);
   final TextEditingController _searchController = TextEditingController();
-  final MainViewModel _viewModel = MainViewModel(service: getIt<EngineerService>());
+  final MainViewModel _viewModel =
+      MainViewModel(service: getIt<EngineerService>());
 
   final LoadingControl _loadingControl = LoadingControl();
 
@@ -44,7 +47,10 @@ class _MainPageState extends State<MainPage> {
       if (_loadingControl.isShowing) {
         _loadingControl.close();
       } else {
-        showDialog(context: context, builder: (_) => _loadingControl.create(), barrierDismissible: false);
+        showDialog(
+            context: context,
+            builder: (_) => _loadingControl.create(),
+            barrierDismissible: false);
       }
     });
     _viewModel.addListener((items) {
@@ -58,7 +64,7 @@ class _MainPageState extends State<MainPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Comunidade engenheiros de software'),
+        title: const Text('Comunidade Engenheiros de Software - MVP'),
         actions: [
           Observer(
             builder: (_) {
@@ -89,7 +95,8 @@ class _MainPageState extends State<MainPage> {
             onPressed: () async {
               final navigator = Navigator.of(context);
               await _viewModel.logout();
-              navigator.pushReplacement(MaterialPageRoute(builder: (_) => LoginPage()));
+              navigator.pushReplacement(
+                  MaterialPageRoute(builder: (_) => LoginPage()));
             },
             mini: true,
             heroTag: null,
@@ -100,7 +107,8 @@ class _MainPageState extends State<MainPage> {
             builder: (_, snapshot) => Visibility(
               visible: snapshot.data ?? false,
               child: FloatingActionButton(
-                onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (_) => ManagerPage())),
+                onPressed: () => Navigator.push(
+                    context, MaterialPageRoute(builder: (_) => ManagerPage())),
                 mini: true,
                 heroTag: null,
                 backgroundColor: AppColor.primaryColorDark,
@@ -111,7 +119,8 @@ class _MainPageState extends State<MainPage> {
             future: _viewModel.isADM(),
           ),
           FloatingActionButton(
-            onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (_) => const ProfilePage())),
+            onPressed: () => Navigator.push(context,
+                MaterialPageRoute(builder: (_) => const ProfilePage())),
             heroTag: null,
             backgroundColor: AppColor.primaryColorDark,
             child: const Icon(Icons.person),
@@ -149,7 +158,8 @@ class _MainPageState extends State<MainPage> {
                   itemBuilder: (context, data, index) => EngineerItem(
                     engineer: data,
                     onClick: (item) {
-                      Navigator.of(context).push(MaterialPageRoute(builder: (_) => EngineerPage(engineer: item)));
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (_) => EngineerPage(engineer: item)));
                     },
                     showSecondButton: false,
                   ),

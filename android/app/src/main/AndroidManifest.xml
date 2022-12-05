@@ -1,6 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="engsoft.app.comunidade_de_engenheiros_de_software">
    <application
+        android:usesCleartextTraffic="true"
         android:label="comunidade_de_engenheiros_de_software"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">

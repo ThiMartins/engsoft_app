@@ -1,3 +1,5 @@
+import 'package:comunidade_de_engenheiros_de_software/api/manager/api.dart';
+import 'package:comunidade_de_engenheiros_de_software/util/api_util.dart';
 import 'package:comunidade_de_engenheiros_de_software/api/model/engineer/engineer.dart';
 import 'package:comunidade_de_engenheiros_de_software/api/model/user/user.dart';
 import 'package:comunidade_de_engenheiros_de_software/api/service/provider_test.dart';
@@ -62,8 +64,10 @@ class EngineerServiceDev extends EngineerService {
 
     List<Engineer> engineers = [];
     for (Pair<User, Engineer> engineer in usersTest) {
-      if (engineer.second.nickname.toLowerCase().contains(query.toLowerCase()))
-        engineers.add(engineer.second);
+      if (engineer.second.nickname
+              .toLowerCase()
+              .contains(query.toLowerCase()) &&
+          engineer.second.isApproved) engineers.add(engineer.second);
     }
 
     return engineers;
@@ -73,6 +77,11 @@ class EngineerServiceDev extends EngineerService {
   Future<List<Engineer>> listAll(int offset) async {
     await Future.delayed(const Duration(seconds: 2));
     if (offset == 0) return usersTest.map((e) => e.second).toList();
+
+    //final response = await API.currentDio
+    //    .get<String>("/engenheiros", queryParameters: {"page": offset});
+    //final responseP = response.responseList<Engineer>().data;
+
     return [];
   }
 

@@ -93,7 +93,7 @@ class LoginPage extends StatelessWidget {
                                         AppColor.buttonTextColor),
                                 overlayColor:
                                     MaterialStateProperty.all(Colors.white10)),
-                            child: const Text('Forget password?'),
+                            child: const Text('Perdeu a senha?'),
                           ),
                         ],
                       ),

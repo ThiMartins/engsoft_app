@@ -45,6 +45,7 @@ abstract class MainViewModelBase with Store {
 
   Future<List<Engineer>> getEngineers(int page) async {
     final item = await service.listAll(page);
+    item.removeWhere((item) => item.isApproved == false);
     return item;
   }
 

@@ -1,10 +1,9 @@
 import 'dart:async';
-
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 
 bool apiIsInitialized = false;
-String baseUrl = 'https://localhost:8080/';
+String baseUrl = 'http://192.168.10.58:3000/';
 
 late Dio _dio;
 
